@@ -1,1 +1,1 @@
-# Lista-Tareas2026
+Este es el repositorio para el ejercicio de la Lista de Tareas de la classe de Desarrollo de Aplicaciones.
