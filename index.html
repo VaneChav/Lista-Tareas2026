@@ -26,7 +26,7 @@
 <body>
   <div class="contenedor">
     <h1 class="titulo">Lista de Treas ✅</h1>
-    <p class="mensaje"> Escribe tu proxima tarea! 😺</p>
+    <p class="mensaje" id="mensaje"> Escribe tu proxima tarea! 😺</p>
     <input 
     type="text" 
     class="tarea-entrada" 
@@ -45,27 +45,7 @@
       <p>Tareas terminadas: <span class="tareas-terminadas">0</span></p>
     </div>
 
-    <div class="contenedor-tareas" id="contenedorTareas">
-
-<!-- Estructura tarea 1 Completada -->
-      <div class="tarea">
-        <p class="tarea-texto">Estudiar para el examen de Limon 😥</p>
-        <div class="tareas-iconos">
-          <i class="bi bi-check-circle"></i>
-          <i class="bi bi-trash2"></i>
-        </div>
-      </div>
-
-<!-- Estructura tarea 2 Completada -->
-      <div class="tarea tarea-completada">
-        <p class="tarea-texto">Grabar secuencia de escena del Cortometraje! 🎥</p>
-        <div class="tareas-iconos">
-          <i class="bi bi-dash-circle"></i>
-          <i class="bi bi-trash2"></i>
-        </div>
-      </div>
-
-    </div>
+    <div class="contenedor-tareas" id="contenedorTareas"></div>
 
   </div>
 </body>
