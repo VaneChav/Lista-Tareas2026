@@ -6,6 +6,8 @@ const contenedorTareas = document.getElementById("contenedorTareas");
 const mensaje = document.getElementById("mensaje");
 const contadorTotales = document.getElementById("contadorTotales");
 const contadorTerminadas = document.getElementById("contadorTerminadas");
+const botonOcultar = document.getElementById("botonOcultar");
+const botonEliminar = document.getElementById("botonEliminar");
 
 
 
@@ -65,6 +67,7 @@ function crearElementoTarea() {
   return tareaContenedor;
 
 }
+
 /* Función actualizar  contenedores */
 
 function actualizarContadores() {
@@ -77,8 +80,55 @@ function actualizarContadores() {
   contadorTerminadas.textContent = tareasTerminadas.length; 
 }
 
+/* Función Ocultar y Mostrar las Tareas Completadas */
+let tareasOcultas = false;
+
+function toggleOcultarCompletadas() {
+  // Contamos los elementos con la clase tarea-completada
+  const tareasCompletadas = document.querySelectorAll(".tarea-completada");
+
+  //Ejecutamos una funcion por cada elemento de la lista de nodos con forEach()
+
+  tareasCompletadas.forEach( (tarea) => {
+    // Codigo que se ejecuta por cada una de las tareas
+    if(tareasOcultas) {
+      tarea.style.display = "flex";
+    } else {
+      // Asignar un display none,hace que se oculten.
+      tarea.style.display = "none";
+    }
+
+  } );
+
+  // Cambiamos el estado de la variable tarea ocultas
+  tareasOcultas = !tareasOcultas; 
+
+  //Cambiar el texto del boton
+  if(tareasOcultas) {
+    botonOcultar.textContent = "Mostar Completadas"
+  } else {
+    botonOcultar.textContent = "Ocultar Completadas"
+  }
+
+}
+
+/* Función Eliminar todas las tareas completadas */
+
+  function eliminarCompletada() {
+    // Contar las tareas con la clase tarea-completada
+    const tareaCompletada = document.querySelectorAll(".tarea-completada");
+
+    //Eliminar cada tarea completada
+    tareaCompletada.forEach( (tarea) => { tarea.remove() } )
+
+    // Actualizar los contenedores
+    actualizarContadores();
+  }
+
 /* Escuchador Boton*/
 botonAgregar.addEventListener("click", agregarTarea);
+botonOcultar.addEventListener("click", toggleOcultarCompletadas); 
+botonEliminar.addEventListener("click", eliminarCompletada); 
 
 /* Funcion Agregar el elemento Tarea */
 function agregarTarea() {
