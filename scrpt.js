@@ -4,6 +4,10 @@ const tareaEntrada = document.getElementById("tareaEntrada");
 const botonAgregar = document.getElementById("botonAgregar");
 const contenedorTareas = document.getElementById("contenedorTareas");
 const mensaje = document.getElementById("mensaje");
+const contadorTotales = document.getElementById("contadorTotales");
+const contadorTerminadas = document.getElementById("contadorTerminadas");
+
+
 
 /* Función para crear elemento tarea (Función creadora del nodo Tarea) */
 function crearElementoTarea() {
@@ -43,17 +47,34 @@ function crearElementoTarea() {
       e.target.classList.remove("bi-check-circle");
       e.target.classList.add("bi-bi-dash-circle");
     }
+
+    // Actualizamos los contadores
+    actualizarContadores();
   })
 
   iconoEliminar.addEventListener("click", (e) => {
     //Codigo que se ejecuta
     const tareaElemento = e.target.parentNode.parentNode;
     tareaElemento.remove();
+
+    // Actualizamos los contadores
+    actualizarContadores();
   })
 
   //Retomamos la estructura de la tarea
   return tareaContenedor;
 
+}
+/* Función actualizar  contenedores */
+
+function actualizarContadores() {
+  // Contamos los elementos con la clase tarea 
+  const tareasTotales = document.querySelectorAll(".tarea");
+  const tareasTerminadas = document.querySelectorAll(".tarea-completada");
+
+  // Actualizamos los contadores en el DOM
+  contadorTotales.textContent = tareasTotales.length;
+  contadorTerminadas.textContent = tareasTerminadas.length; 
 }
 
 /* Escuchador Boton*/
@@ -76,6 +97,9 @@ function agregarTarea() {
 
     //Mostrar el mensaje de tarea creada satisfactoriamente
     mensaje.textContent = "Tarea creada satisfactoriamente"; 
+
+    // Actualizamos los contadores
+    actualizarContadores();
     
   }else{
     //Ejecutas esto otro
